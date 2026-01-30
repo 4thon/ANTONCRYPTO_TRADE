@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>ANTONCRYPTO | Trade</title>
+<link rel="stylesheet" href="style.css">
+<style>
+/* MODAL STYLES */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.75);
+    display: none; /* hidden by default */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-box {
+    background: #0c1418;
+    border: 2px solid #00f6ff;
+    padding: 30px;
+    border-radius: 20px;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 0 40px #00f6ff55;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.modal-box h3 {
+    color: #00f6ff;
+    margin-bottom: 15px;
+}
+
+.modal-box p {
+    color: #fff;
+    margin-bottom: 25px;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: space-around;
+}
+
+.modal-buttons button {
+    padding: 12px 28px;
+    border-radius: 25px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-yes-modal {
+    background: #00ff88;
+    color: #000;
+}
+
+.btn-yes-modal:hover { transform: scale(1.05); }
+
+.btn-no-modal {
+    background: #ff4d4d;
+    color: #fff;
+}
+
+.btn-no-modal:hover { transform: scale(1.05); }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+</style>
+</head>
+<body class="trade-page">
+
+<div class="floater f1"></div>
+<div class="floater f2"></div>
+<div class="floater f3"></div>
+
+<header class="trade-header">
+    <h1>Trade Analysis Dashboard</h1>
+    <p>Funding, market signals, and projected outcome</p>
+</header>
+
+<section class="trade-layout">
+
+    <!-- LEFT: ANALYTICS -->
+    <div class="analytics">
+
+        <div class="panel">
+            <h3>Market Status</h3>
+            <p class="green">● Bullish Momentum</p>
+            <p class="small">
+                Price action shows strong continuation supported by volume
+                imbalance and short-term liquidity sweep.
+            </p>
+        </div>
+
+        <div class="panel">
+            <h3>Trade Confidence</h3>
+
+            <div class="progress-wrapper">
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+                <div class="progress-percent">85%</div>
+            </div>
+
+            <p class="small">
+                Analyzing trend strength, RSI positioning, volume spikes,
+                and previous resistance breakouts.
+            </p>
+
+            <div class="mini-graph">
+                <span></span><span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span>
+            </div>
+        </div>
+
+        <div class="panel">
+            <h3>Risk Disclosure</h3>
+            <p class="warning">
+                Trading involves risk. Projections are based on current
+                indicators and may change due to volatility.
+            </p>
+        </div>
+
+    </div>
+
+    <!-- RIGHT: WALLET + SUMMARY -->
+    <div class="trade-summary">
+
+        <div class="wallet-section">
+            <h3>Fund Your Trade</h3>
+
+            <label class="label">Select E-Wallet</label>
+            <select class="wallet-select">
+                <option>GCash</option>
+                <option>Maya</option>
+                <option>Coins.ph</option>
+                <option>Binance Pay</option>
+            </select>
+
+            <label class="label">Deposit Amount</label>
+            <div class="deposit-options">
+                <div class="deposit-box active">₱2,000</div>
+                <div class="deposit-box">₱5,000</div>
+                <div class="deposit-box">₱10,000</div>
+            </div>
+
+            <p class="small-note">
+                Funds will be allocated to the selected trade session.
+            </p>
+        </div>
+
+        <h2>Trade Summary</h2>
+
+        <div class="summary-box">
+            <div class="row">
+                <span>Trader</span>
+                <strong>ANTONCRYPTO</strong>
+            </div>
+            <div class="row">
+                <span>Deposit</span>
+                <strong>₱2,000</strong>
+            </div>
+            <div class="row highlight">
+                <span>Possible Cashout</span>
+                <strong>₱4,000</strong>
+            </div>
+            <div class="row">
+                <span>Estimated Time</span>
+                <strong>15–30 mins</strong>
+            </div>
+        </div>
+
+        <div class="trade-actions">
+            <a href="#" class="btn-yes" onclick="openModal()">CONFIRM TRADE</a>
+            <a href="index.html" class="btn-no">CANCEL</a>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- MODAL POP-UP -->
+<div class="modal-overlay" id="tradeModal">
+    <div class="modal-box">
+        <h3>Confirm Trade</h3>
+        <p>Deposit: ₱2,000<br>Possible Cashout: ₱4,000</p>
+        <div class="modal-buttons">
+            <button class="btn-yes-modal" onclick="confirmYes()">YES</button>
+            <button class="btn-no-modal" onclick="confirmNo()">NO</button>
+        </div>
+    </div>
+</div>
+
+<script>
+function openModal() {
+    document.getElementById('tradeModal').style.display = 'flex';
+}
+
+function confirmYes() {
+    document.getElementById('tradeModal').style.display = 'none';
+    alert("✅ Trade Confirmed! Your trade is now processing.");
+}
+
+function confirmNo() {
+    document.getElementById('tradeModal').style.display = 'none';
+    alert("❌ Trade Cancelled.");
+}
+</script>
+
+</body>
+</html>
